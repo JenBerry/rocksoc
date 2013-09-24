@@ -1,0 +1,13 @@
+{% extends "wus/wus_base.html" %}
+{% load rocksoc_html %}
+{% block title %}Wake Up Screaming: Information for DJs{% endblock %}
+{% block wus_content %}
+	{% for flatpage in djinfo_pages %}
+		<div class="center-section">
+			<h2 class="header-bar-full">{{ flatpage.title }}</h2>
+          	<div class="textbox-full">
+          			{{ flatpage|format_flatpage|safe }}
+          	</div>
+    	</div>
+    {% endfor %}
+{% endblock %}

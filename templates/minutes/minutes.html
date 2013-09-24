@@ -1,0 +1,48 @@
+{% extends "rocksoc_base.html" %}
+{% load rocksoc_html %}
+{% load markup %}
+{% block title %}
+	Rocksoc minutes:
+  	{{ minutes.meeting|date:"l j F Y" }}
+  	{% if minutes.title %}
+	&mdash; {{ minutes.title }}
+  	{% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- code for minutes pages /minutes/category/date -->
+<div class="center-section">
+	<h1 class="header-bar-full">
+		Rocksoc minutes: {{ minutes.meeting|date:"l j F Y" }}
+  		{% if minutes.title %}
+		&mdash; {{ minutes.title }}
+  		{% endif %}
+  	</h1>
+	
+	<!-- minutes nav bar -->
+	<p class="nav"><a href="/minutes/">Index of all minutes</a> | <a href="/minutes/{{ minutes.category.tag }}/">{{ minutes.category.title }}</a></p>
+	<div class="textbox-full">
+	<!-- the minutes -->
+		{% if minutes.taken_by %}
+			<p><em>These minutes taken by: {{ minutes.taken_by }}</em></p>
+		{% endif %}
+	
+		{% ifequal minutes.format "text/plain" %}
+			{{ minutes.minutes|escape|linebreaks }}
+		{% endifequal %}
+	
+		{% ifequal minutes.format "application/xhtml+xml" %}
+			{{ minutes.minutes|safe }}
+		{% endifequal %}
+	
+		{% ifequal minutes.format "text/x-rst" %}
+			{{ minutes.minutes|restructuredtext }}
+		{% endifequal %}
+	
+		{% ifequal minutes.format "text/x-livejournal" %}
+			{{ minutes.minutes|linebreaks }}
+		{% endifequal %}
+	</div>
+</div>
+
+{% endblock %}

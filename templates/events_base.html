@@ -1,0 +1,106 @@
+{% extends "rocksoc_base.html" %}
+{% load rocksoc_html %}
+{% block content %}
+
+	<div class="center-section">
+		<h1 class="header-bar-full">Events listings</h1>
+		<div class="textbox-full">
+			Below are listings of all alternative events we know about
+			in Cambridge. If you know of an event not on this list,
+			or are organising one, then contact the webmaster to
+			have it added.<br /><br />
+			Highlighted events are official Rocksoc events.<span class="no-print"><br /><br />
+			You may add these events to your calendar automatically using the
+			<a href="webcal://www.rocksoc.org.uk/events/icalendar/" title="Rocksoc's iCalendar feed.">iCalendar feed</a>.</span>
+		</div>
+	</div>
+	
+	<div class="center-section no-print">
+		<div class="textbox-full">
+			<a href="/events/">Future events</a>
+			| Past events:			
+			{% for year in relevant_years %}
+				<a href="/events/{{ year|date:"Y" }}/">{{ year|date:"Y" }}</a>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="center-section">
+		<h2 class="header-bar-full">{% block h1_text %}Title{% endblock %}</h2>
+		<div class="textbox-full">
+			<table class="events">
+				{% for event in event_list %}
+					<tr id="event-{{ event.id }}"
+						{% if event.is_rocksoc %}
+						class="rocksoc-event"
+						{% else %}
+						class="other-event"
+						{% endif %}
+					>
+						<td class="event-info"	>
+							<p class="event-date">{% block date_td %}{{ event.edatetime|date:"jS N Y H:i" }}{% endblock %}</p>
+							<p class="event-title">
+								{% block event-title %}
+						      		{% if event.eoutlink %}
+									<a href="{{ event.eoutlink }}">{{ event.ename }}</a>
+						      		{% else %}
+									{{ event.ename }}
+						      		{% endif %}
+						      	{% endblock %}
+					      	</p>
+					      	<p class="event-venue">
+					      		{% block venue %}
+						      		{% if event.venue %}
+						      			at 
+						  				{% if event.venue.use_our_page %}<a href="/venues/{{ event.venue.id }}/">
+						  				{% else %}
+						  					{% if event.venue.website %}<a href="{{ event.venue.website }}">
+						  					{% endif %}
+						  				{% endif %}
+										{{ event.venue.name }}
+						  				{% if event.venue.use_our_page or event.venue.website %}</a>
+						  				{% endif %}
+						  			{% endif %}
+						  		{% endblock %}
+					  		</p>
+					  		{% block organiser_td %}
+					  			{% if event.organised_by %}
+							  		<p class="event-organiser">
+							  			Organised by 
+										{{ event.organised_by }}
+									</p>
+								{% endif %}
+							{% endblock %}
+						  	{% block event-icon %}
+					  			{% if event.eicon %}
+					  				<p class="event-img"><img src="{{event.eicon}}" width="100px" alt="Event-icon" /></p>
+								{% endif %}
+							{% endblock %}
+						</td>
+						<td class="event-description">
+							{% block event-desc %}
+								{{ event.edescription|safe }}
+					  			{% if event.elink %}
+					      			{% ifnotequal event.elink "none" %}
+					      				(<a href="{{ event.elink }}">read more...</a>)
+					      			{% endifnotequal %}
+					  			{% endif %}
+						  	{% endblock %}
+						</td>
+					</tr>					
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+	
+	<div class="center-section no-print">
+		<div class="textbox-full">
+			<a href="/events/">Future events</a>
+			| Past events:			
+			{% for year in relevant_years %}
+				<a href="/events/{{ year|date:"Y" }}/">{{ year|date:"Y" }}</a>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}

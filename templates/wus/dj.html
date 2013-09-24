@@ -1,0 +1,33 @@
+{% extends "wus/wus_base.html" %}
+{% load rocksoc_html %}
+{% block title %}Wake Up Screaming DJ: {{ dj.name }}{% endblock %}
+{% block wus_content %}
+<!-- code for individual DJ pages /wus/dj/djname/ -->
+
+<div class="center-section">
+	<h2 class="header-bar-full">DJ: {{ dj.name }}</h2>
+	<div class="textbox-full">
+		{% if dj.represents_djs.all %}
+		<p>Other sets by these DJs:</p>
+			<ul>
+				{% for other in dj.represents_djs.all %}
+				<li><a href="{{ other.get_absolute_url }}">{{ other.name }}</a></li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+		{% include "wus/dj_summary.inc" %}
+	</div>
+</div>
+
+<div class="center-section">
+	<h3 class="header-bar-full">Tracks played</h3>
+	<div class="textbox-full">
+		{% for set in dj.sets reversed %}
+			{% include "wus/setlist.inc" %}<br/>
+		{% endfor %}
+	</div>
+</div>
+
+
+
+{% endblock %}

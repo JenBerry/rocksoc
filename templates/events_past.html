@@ -1,0 +1,24 @@
+{% extends "events_base.html" %}
+{% load rocksoc_html %}
+{% block title %}Rocksoc: past events: {{ year }}{% endblock %}
+
+{% comment %} <!-- does not display images and disables links
+(we don't want to be checking the links and keeping images for ever)--> {% endcomment %}
+
+
+
+	{% block h1_text %}Past events: {{ year }}{% endblock %}
+	
+	{% block date_td %}{{ event.edatetime|date:"jS N" }}{% endblock %}
+
+	{% block organiser_td %}{% endblock %}
+	{% block event-icon %}{% endblock %}
+	{% block event-title %}{{ event.ename }}{% endblock %}
+	{% block venue %}
+		{% if event.venue %}
+			at 
+			{{ event.venue.name }}
+		{% endif %}
+	{% endblock %}
+	{% block event-desc %}{{ event.edescription|removetags:"a img"|safe }}{% endblock %}
+

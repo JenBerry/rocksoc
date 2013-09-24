@@ -1,0 +1,23 @@
+{% extends "rocksoc_base.html" %}
+{% load rocksoc_html %}
+{% load markup %}
+{% block title %}Rocksoc: Members Gallery{% endblock %}
+{% block content %}
+
+	<!-- code for /gallery/members -->
+<div class="center-section">
+	<h1 class="header-bar-full">Members’ gallery</h1>
+	<div class="gallery">
+		{% for photo in photo_list reversed %}
+			<div class="gallery-float">
+			<a href="/gallery/members/{{ photo.id }}/">
+        			<img src="{{ MEDIA_URL }}{{ photo.thumbnail }}" width="120"
+             			height="160" alt="[Photo: {{ photo.caption }}]" />
+      			</a>
+      			<br />
+			<a href="/gallery/members/{{ photo.id }}/">{{ photo.caption }}</a>
+    		</div>
+  		{% endfor %}
+	</div>
+</div>
+{% endblock %}

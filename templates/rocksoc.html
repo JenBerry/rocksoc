@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <link href="/smcv-rocksoc.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}img/favicon.png" rel="shortcut icon" type="image/png">
+    <title>{% block title %}Rocksoc{% endblock %}</title>
+</head>
+<body>
+<div class="rsoc-nav panel">
+{% block navbar %}
+		<div id="rsoc-cornerlogo">
+			<a href="/">
+				<img alt="Rocksoc" height="50" src="/media/img/rocksoc-151x50-trans.png" width="151" />
+			</a>
+		</div>
+
+		<ul>
+			<li>|</li>
+			<li><a href="/">Home</a></li>
+			<li>|</li>
+			<li><a href="/member/">Membership</a></li>
+			<li>|</li>
+			<li><a href="/events/">Events</a></li>
+			<li>|</li>
+			<li><a href="/wus/">Wake Up Screaming</a></li>
+			<li>|</li>
+			<li><a href="/information/">About Us</a></li>
+			<li>|</li>
+			<li><a href="/updates/">Keep Informed</a></li>
+			<li>|</li>
+		</ul>
+		<ul id="rsoc-navsm">
+			<li>|</li>
+			<li><a href="/gallery/">Gallery</a></li>
+			<li>|</li>
+			<li><a href="/stash/">Stash</a></li>
+			<li>|</li>
+			<li><a href="/links/">Links</a></li>
+			<li>|</li>
+			<li><a href="/quotes/">Quote!</a></li>
+			<li>|</li>
+			<li><a href="/feedback/">Contact</a></li>
+			<li>|</li>
+			
+		</ul>
+{% endblock %}
+</div>
+<div class="content">
+{% block content %}
+{% endblock %}
+</div>
+</body>
+</html>

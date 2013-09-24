@@ -1,0 +1,18 @@
+{% extends "rocksoc_base.html" %}
+{% block title %}Rocksoc's committee of {{committee_year}}{% endblock %}
+
+{% block content %}
+<div class="center-section">
+	<h1 class="header-bar-full">The Rocksoc committee of {{committee_year}}&ndash;{{committee_year|add:"1"}}</h1>
+	<p class="nav">
+			<a href="/committee/current/">Current Committee</a> | Previous committees: 
+	 		{% for Committee in years %}
+				<a href="/committee/{{Committee.year_elected}}/">{{Committee.year_elected}}</a> 
+			{% endfor %}
+			<a href="/committee_old/">Older committees</a>
+		</p>
+	<div class="textbox-full">
+		{% include "committee.inc" %}
+	</div>
+</div>
+{% endblock %}

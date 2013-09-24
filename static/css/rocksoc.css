@@ -1,0 +1,286 @@
+/*created by JenB 17/3/09*/
+
+/* color scheme: dark red: #300, light red: #700, darker text: #baa
+hover links: #f99, black: #000, white: #fff */
+
+/*general formatting*/
+body, html {color:#fff; background-color:#000;
+	font-family: Verdana, Tahoma, Arial, Sans-serif;
+	font-size: 11pt; text-align: left;
+	padding: 0px; margin: 0px; min-width:700px;}
+  		
+a:link, a:visited { color : #f00; }
+a:link:hover, a:visited:hover { color: #f99;}
+a { text-decoration: underline }
+	/*use id="no-link" to make links white instead of red*/
+.no-link a:link, .no-link a:visited {color: #fff;}
+.no-link a:link:hover, .no-link a:visited:hover {color:#f99;}
+
+
+td, tr { margin: 0px; border-spacing: 0px; }
+a img { border: none; }
+p {margin:0em;}
+table {border-collapse:collapse;}
+h1 { font-size: 1.3em; font-weight: bold; margin: 0 }
+h2 {font-size: 1em; font-weight:normal; margin:0em;
+    color:#f00; text-align:left;}
+h3 { margin: 0 }
+hr {color:#701; background-color:#700; border:none; height:1px;}
+
+
+/*containing div for content*/
+div.all-content{padding-top: 3%;padding-bottom:3%;padding-left:0%; padding-right:0%;
+                clear:both;}
+
+
+/*div's for each section*/
+div.center-section{
+				width:100%;
+				clear:both;
+				}
+div.left-section, div.index-wus {
+				width:49.5%;
+				float:left;
+				overflow:auto;
+				
+				}
+div.right-section, div.index-news {
+				width:49.5%;
+				float:right;
+				overflow:auto;
+								}
+
+/*formatting for the header bars*/
+h1.header-bar-full, h2.header-bar-full, h2.header-bar-left, h2.header-bar-right, h3.header-bar-full, h3.header-bar-left, h3.header-bar-right {
+	background-color: #300;
+	color: #fff;
+	font-size: 1.3em;
+	font-weight: bold;
+	border-bottom: solid 1px #700;
+}
+
+h1.header-bar-full, h2.header-bar-full, h3.header-bar-full {
+	margin-right: 15%;
+	padding-left: 15%;
+}
+
+h2.header-bar-left, h3.header-bar-left { padding-left: 30% }
+h2.header-bar-right, h3.header-bar-left { padding-right: 30% }
+
+/*formatting for text boxes*/		
+div.textbox-full,
+div.textbox-left,
+div.textbox-right,
+div.gallery
+				{
+				margin-top: 7px;
+				margin-bottom: 14px;
+				background-color:#300;
+				padding:2%;}
+div.textbox-full{margin-left:15%; margin-right:15%; overflow:auto;}
+div.textbox-left{margin-left:30%;}
+div.textbox-right {margin-right:30%;}
+div.gallery {margin-left:5%;margin-right:5%;overflow:auto; background-color:#000}
+
+div#news-text,
+div#wus-text,
+div#next-wus,
+div#last-wus
+				{height:230px;
+				overflow:auto;}
+div.index-text-news { height:200px;overflow:hidden;
+					font-size:0.8em}
+
+
+/*paragraph styles*/
+p.heading {
+				color:#f00;
+				margin-bottom:0em;
+				margin-top:0.2em;
+				margin-left:2em;
+				margin-right:2em;
+				}
+p.body{
+				color:#baa;
+				margin:0em;
+				margin-left:4em;
+				margin-right:4em;
+				font-size:0.8em;
+				}
+p.strong{
+				color:#fff;
+				margin:0em;
+		}
+p.nav {padding-left:15%}
+
+
+/*formatting for the guitar img*/
+div.index-img-left,
+div.index-img-right
+				{width:100px;height:133px;
+				background-image:url("/static/img/graphics/guitar100.gif");}
+div.index-img-left{float:left;}
+div.index-img-right{float:right;}
+
+/*formatting for the WUS tables*/
+div.wus-heading {height:2.5em;}
+table.wus-info th {font-weight:normal;
+					color:#f00;
+					border-bottom:solid 1px #700;}
+table.wus-info {width:100%; font-size:8pt}
+table.wus-info td {padding:5px;}
+table.wus-info th.wus-slot {width:90px;}
+div.wus-box {max-width:500px; margin:auto;}
+td.setlist {color:#700; font-size:0.8em;}
+td.setlist a:link, td.setlist a:visited {color:#700;}
+
+/*formatting for WUS stuff*/
+img.wus-header {width:674px; height:70px;}
+div.wus-header {text-align:center;width:100%;}
+div.img-box {text-align:center;}
+table.track th, table.artist th {font-weight:normal; color:#f00; border-bottom:2px solid #700;}
+table.track td, table.artist td {font-size:0.8em; color:#baa; border-bottom:1px solid #700}
+table.track a:link, table.track a:visited, table.artist a:link, table.artist a:visited {color:#baa;}
+table.track a:link:hover, table.track a:visited:hover, table.artist a:link:hover, table.artist a:visited:hover {color:#f99;}
+table.track, table.artist {width:100%;}
+div.track-list {font-size:0.8em;}
+ul.dj-sets {margin-left:5em;}
+table.top-tracks{width:80%; font-size:0.8em; margin:auto}
+table.top-tracks tr {border-bottom:solid 1px #700;}
+table.top-tracks th.played{width:50px;}
+table.top-tracks th.artist{width:40%;}
+
+/* It's overwhelming to underline every link in these tables and lists, though perhaps this could be fixed with whitespace */
+table.top-tracks a, .track-list table a, table.track a, table.artist a, ul.dj-sets a { text-decoration: none }
+
+/*formatting for the events table*/
+table.events {width:94%;margin:auto;}
+table.events tr {border:solid 1px #700;}
+table.events td {padding:1em;}
+table.events p.event-venue {font-size:0.8em; color:#f00; padding-left:1em;}
+table.events p.event-organiser {font-size:0.8em; color:#baa; padding-left:1em;}
+table.events p.event-img {text-align: center; margin-top:1em; margin-bottom:1em;}
+table.events td.event-description {font-size:0.8em; color:#baa;}
+table.events p.event-title {color:#f00;}
+table.events tr.rocksoc-event {border:solid 2px #baa;}
+ /*these make sure the table formatting doesn't affect any tables within the desription*/
+table.events td.event-description tr {border: none}
+table.events td.event-description td {padding:0em;}
+table.events td.event-info {width :150px; vertical-align:top}
+
+/*the navbar*/
+#rsoc-nav {border-color : #700;
+		background : #300;
+		clear:both;
+ 		text-align : center ;
+  		padding-top: 5px;
+  		padding-bottom: 5px;
+  		border-bottom-width: 1px;
+  		border-bottom-style: solid;
+	position: relative;
+}
+
+/* It's overwhelming to underline every link in the navigation bar */
+#rsoc-nav a { text-decoration: none }
+
+#rsoc-cornerlogo {
+	height: 76px;
+	width: 100%;
+	background-image: url("/static/img/graphics/hands.gif");
+	background-position: top left;
+	background-repeat: no-repeat;
+}
+
+#rsoc-cornerlogo a {
+	position: absolute;
+	bottom: -11px;
+	left: 0;
+}
+
+#rsoc-nav li, #rsoc-nav ul {
+		list-style: none;
+  		text-indent: 0;
+  		margin: 0;
+  		padding: 0; }
+ul#rsoc-nav-submenu { font-size: 9pt; }
+#rsoc-nav li {
+  		display: inline;
+  		padding-left: 0.8em;
+  		padding-right: 0.8em;
+  		line-height: 1.5em;
+	border-color: #fff;
+	border-style: solid;
+	border-width: 0 1px 0 0;
+}
+
+#rsoc-nav li:first-child {
+	border-left-width: 1px;
+}
+
+/*The rocksoc card on the members page*/
+div.rocksoc-card {
+					width:300px;
+					height:185px;
+					margin: auto;
+					background-color: #000;
+					color: #fff;
+					padding: 10px;
+					}
+div.rocksoc-card-inner{
+					border: solid 2px #fff;
+					padding: 10px;
+					height:160px;
+					}
+div.rocksoc-card-inner {text-align:center;}
+div.rocksoc-card-inner img {width:170px;}
+div.rocksoc-card-inner p {font-size:0.7em; width: 100%;}
+div.rocksoc-card-inner td.small {font-size: 0.7em; width:50px;}
+div.rocksoc-card-inner td.big {border-bottom:solid 1px #fff; width:75px; font-style:italic;}
+div.rocksoc-card-inner table {width:250px;}				
+
+
+/*members gallery*/	
+div.gallery-float { border-width: 1px; border-style: solid; border-color:#700; padding: 2px; margin: 5px;
+                    float: left; }
+div.member-photo {text-align:center}
+
+/*promo gallery*/
+div.promo-gallery div {float:left; padding:1em;}
+                    
+/* quotes */
+table.rsoc-quotes th {color:#f00; font-weight:normal; border-bottom:1px solid #700;}
+table.rsoc-quotes td {padding:3px; border:1px solid #700;font-size:0.9em; color:#baa}
+
+/*feedback page*/
+table.emails td {padding:3px; font-size:0.9em;color:#baa;}
+table.emails th {font-weight:normal; color:#f00; border-bottom:solid 1px #700;}
+table.emails {margin:auto;}
+
+/*committee*/
+div.committee table{width:100%; }
+div.committee td {vertical-align:top; padding:0.5em; border-bottom:1px solid #700}
+div.committee td.committee_image{width:110px}
+div.committee td.position {width:150px}
+div.committee tr.committee_info {height:1.5em;}
+div.committee tr.committee_desc {color:#baa; font-size:0.8em;}
+table.c2001 {width:80%; margin:auto;}
+table.c2001 td {border:1px solid #666; text-align:center;}
+
+/*updates*/
+span.email {color:#f00}
+div.empty {background-color:#000}
+
+/*constitution*/
+div.constitution p {margin:10px; text-indent: -1em;}
+
+/* events photos */
+table.event-img th.event-img-date {width:150px}
+table.event-img td {border-bottom:1px solid #700;}
+
+/* For band names in events and news */
+span.band-name, a.band-name {
+	font-variant: small-caps;
+}
+
+/* For things which should only be displayed when printed. */
+.print-only { display: none }

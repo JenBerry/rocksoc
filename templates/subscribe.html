@@ -1,0 +1,27 @@
+{% extends "rocksoc_base.html" %}
+{% load rocksoc_html %}
+{% block title %}Rocksoc mailing list subscription{% endblock %}
+{% block content %}
+
+	<!-- Code for /mailing-list/subscribe - when you press the subscribe button on the subscription form -->
+<div class="center-section">
+	<h1 class="header-bar-full">Rocksoc mailing list subscription</h1>
+	<div class="textbox-full">
+		<form action="/mailing-list/subscribe/" method="post">{% csrf_token %}
+			{% if form.your_email.errors %}
+				<ul>
+					{% for err in form.your_email.errors %}
+						<li><em>{{ err }}</em></li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+	
+			<p>
+				<label for="id_your_email">Your email address:</label>
+				{{ form.your_email }}
+				<input type="submit" value="Subscribe to rocksoc-official" />
+			</p>
+		</form>
+	</div>
+</div>
+{% endblock %}

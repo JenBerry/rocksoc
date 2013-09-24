@@ -1,0 +1,56 @@
+{% extends "rocksoc_base.html" %}
+{% load rocksoc_html %}
+{% load markup %}
+{% block title %}Rocksoc: Minutes of meetings{% endblock %}
+{% block content %}
+
+<!-- code for the minutes list page /minutes/ -->
+<div class="center-section">
+	<h1 class="header-bar-full">Minutes</h1>
+	<div class="textbox-full">
+		{% regroup minutes_list by category as categories %}
+	
+		<ul>
+			<!-- list of categories -->
+			{% for category in categories %}
+				<li>
+					<a href="#category-{{ category.grouper.tag }}">
+						{{ category.grouper.title }}
+					</a>
+					{% if category.grouper.description %}
+						&mdash; {{ category.grouper.description }}
+					{% endif %}
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+
+	<!-- list of minutes by category -->
+{% for category in categories %}
+	<div class="center-section">
+		<h2 class="header-bar-full">
+			<a name="category-{{ category.grouper.tag }}" id="category-{{category.grouper.tag }}">
+				{{ category.grouper.title }}
+			</a>
+		</h2>
+		<div class="textbox-full">
+			{% if category.grouper.description %}
+				<p><em>{{ category.grouper.description }}</em></p>
+			{% endif %}
+		
+			<ul>
+				{% for minutes in category.list %}
+		 				<li>
+							<a href="/minutes/{{ category.grouper.tag }}/{{ minutes.id }}/">{{ minutes.meeting|date:"l, j F Y" }}</a>
+		 					{% if minutes.title %}
+							&mdash; {{ minutes.title }}
+		 					{% endif %}
+		 				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endfor %}
+
+{% endblock %}

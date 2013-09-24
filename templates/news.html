@@ -1,0 +1,11 @@
+{% extends "rocksoc_base.html" %}
+{% load rocksoc_html %}
+{% block title %}rocksoc news{% endblock %}
+{% block content %}
+	{% for flatpage in news_pages %}
+		<div class="center-section">
+			<h1 class="header-bar-full">{{ flatpage.title }}</h1>
+			<div class="textbox-full">{{ flatpage|format_flatpage|safe }}</div>
+		</div>
+	{% endfor %}
+{% endblock %}

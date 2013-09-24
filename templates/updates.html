@@ -1,0 +1,55 @@
+{% extends "rocksoc_base.html" %}
+{% block title %} Keeping up to date with Rocksoc events {% endblock %}
+{% block content %}
+
+<div class= "center-section">
+	<h1 class="header-bar-full">Keeping up to date with Rocksoc news and events</h1>
+	<div class="textbox-full">Want to make sure you don't miss anything alternative? There are several ways to keep up to date.</div>
+</div>
+<div class="center-section">
+	<h2 class="header-bar-full">The Rocksoc mailing list</h2>
+	<div class="textbox-full">
+		<p class="strong">The sure way to be kept up to date</p>
+		<p class="heading">Automatic subscription</p>
+		<p class="body">Send an e-mail to: <span class="email">rocksoc-official-subscribe (at) rocksoc org uk</span> and your e-mail address will automatically be subscribed to the list.</p>
+		<div class="no-print">
+			<p class="heading">Fill in this form</p>
+			<p class="body">Even easier, just fill in your e-mail address below.</p><br/>
+			<form action="/mailing-list/subscribe/" method="post">{% csrf_token %}
+				<p class="body">
+					<label for="id_your_email">Your e-mail address:</label>
+					<input type="text" id="id_your_email" class="vEmailField required" name="your_email" size="40" value="" maxlength="75" />
+					<input type="submit" value="Subscribe to rocksoc-official" />
+				</p>
+			</form><br />
+			<p class="body">You will be asked for confirmation before subscription is complete.</p>
+		</div>
+		<p class="body">Subscribers' e-mail addresses will not be provided to anyone other than the Rocksoc committee and the mailing list admins.</p>
+		<p class="heading">Unsubscribe</p>
+		<p class="body">To unsubscribe simply send an e-mail to <span class="email">rocksoc-official-unsubscribe (at) rocksoc org uk</span>.</p>
+
+	</div>
+</div>
+<div class="left-section">
+	<h2 class="header-bar-left">LiveJournal</h2>
+	<div class="textbox-left">
+		<p class="heading"><a href="http://www.livejournal.com/community/rocksoc/">The Rocksoc LJ community</a></p>
+		<p class="body">Details of upcoming events are posted. It also provides a way to chat to other members: <a href="http://www.livejournal.com/community/join.bml?comm=rocksoc">join the Rocksoc LJ community</a>.</p>
+		<p class="heading"><a href="http://syndicated.livejournal.com/rocksoc_events/">LJ events feed</a></p>
+		<p class="body">There is a syndicated events feed which displays the same events as this website: <a href="http://www.livejournal.com/friends/add.bml?user=rocksoc_events">add rocksoc_events</a> to your friends list to be kept up to date.</p>
+	</div>
+</div>
+<div class="right-section">
+	<h2 class="header-bar-right no-link">RSS feed</h2>
+	<div class="textbox-right">
+		<p class="body">The <a href="/rss/">RSS feed</a> will alert you to events 24 hours in advance, and give you weekly summaries of upcoming events on Mondays.</p>
+	</div>
+	<h2 class="header-bar-right">Social websites</h2>
+	<div class="textbox-right">
+		<p class="heading"><a href="http://www.facebook.com/group.php?gid=2410451127" title="Cambridge Rocksoc on Facebook">Facebook group</a></p>
+		<p class="body">Details of upcoming events are posted on the <a href="http://www.facebook.com/group.php?gid=2410451127" title="Cambridge Rocksoc on Facebook">Facebook group</a>, along with members' photos of past events.</p>
+		<p class="heading"><a href="http://twitter.com/camrocksoc" title="Cambridge Rocksoc on Twitter">Twitter feed</a></p>
+		<p class="body"><a href="http://twitter.com/camrocksoc" title="Cambridge Rocksoc on Twitter">Follow camrocksoc on Twitter</a> to get notification of upcoming Rocksoc events and other related events in Cambridge.</p>
+	</div>
+</div>
+{% endblock %}

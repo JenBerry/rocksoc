@@ -1,0 +1,13 @@
+{% extends "events_base.html" %}
+{% load rocksoc_html %}
+{% block title %}Rocksoc: future events{% endblock %}
+
+{% comment %}<!-- extends events_base to code for the future events page --> {% endcomment %}
+
+{% block h1_text %}Future events{% endblock %}
+
+
+{% block date_td %}
+	{{ event.edatetime|date:"jS N H:i" }}
+{% endblock %}
+

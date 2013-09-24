@@ -1,0 +1,31 @@
+{% extends "rocksoc_base.html" %}
+{% load rocksoc_html %}
+{% load markup %}
+{% block title %}
+	Rocksoc minutes: {{ minutes_list.0.category.title }}
+{% endblock %}
+{% block content %}
+<!-- code for list of minutes in a category: /minutes/category -->
+<div class="center-section">
+	<h1 class="header-bar-full">
+		Rocksoc minutes: 
+		{{ minutes_list.0.category.title }}
+	</h1>
+
+	<p class="nav"><a href="/minutes/">Index of all minutes</a></p>
+	<div class="textbox-full">
+		<p class="strong">{{ minutes_list.0.category.description }}</p>
+		<ul>
+			{% for minutes in minutes_list %}
+	  			<li>
+					<a href="/minutes/{{ minutes_list.0.category.tag }}/{{ minutes.id }}/">{{ minutes.meeting|date:"l, j F Y" }}</a>
+	  				{% if minutes.title %}
+					&mdash; {{ minutes.title }}
+	  				{% endif %}
+	  			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+
+{% endblock %}

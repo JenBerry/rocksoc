@@ -1,0 +1,33 @@
+{% extends "rocksoc_base.html" %}
+
+{% block feeds %}
+{{ block.super }}
+<link rel="alternate" type="application/rss+xml" href="/wus/rss/" title="Rocksoc Events Feed: Wake Up Screaming" />
+<!--<link rel="alternate" type="application/atom+xml" href="/wus/atom/" title="Rocksoc Events Feed: Wake Up Screaming" />-->
+{% endblock %}
+
+<!-- Template for WUS -->
+{% block content %}
+	{% block h1 %}
+		<!-- The image for the "Wake up Screaming" header -->
+		<div class="wus-header">
+			<img class="wus-header" src="{{ STATIC_URL }}img/wus/logo-674x70.png" alt="Wake Up Screaming" />
+			<br />
+			<h1>{% block h1_text %}
+			{% endblock %}</h1>
+		</div>
+		<p class="nav">
+			<a href="/wus/">WUS</a> |
+			<a href="/wus/djinfo/">How to DJ at WUS</a> |
+	   		<a href="/wus/dj/">All DJs</a> |
+			<a href="/wus/artist/">All artists</a> |
+			<a href="/wus/track/">All tracks</a> |
+	   		<a href="/wus/date/">All WUS events</a>
+   		</p><br/>
+	{% endblock %}
+	
+	{% block wus_content %}
+	{% endblock %}
+	
+	
+{% endblock %}

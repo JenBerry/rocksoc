@@ -1,0 +1,62 @@
+/* Change colours. */
+body, html, h1.header-bar-full, h2.header-bar-full, h2.header-bar-left, h2.header-bar-right, h3.header-bar-full, h3.header-bar-left,
+h3.header-bar-right, #rsoc-nav, div.textbox-full, div.textbox-left, div.textbox-right, div.gallery {
+	background-color: #fff;
+	color: #000;
+}
+
+p.strong { color: #000 }
+p.body { color: #877 }
+
+.no-link a:link, .no-link a:visited { color: #000 }
+.no-link a:link:hover, .no-link a:visited:hover { color: #000 }
+
+/* Change widths. */
+h1.header-bar-full, h2.header-bar-full, h3.header-bar-full {
+	margin-right: 15px;
+	padding-left: 15px;
+}
+h2.header-bar-left, h3.header-bar-left { padding-left: 30px }
+h2.header-bar-right, h3.header-bar-left { padding-right: 30px }
+
+div.textbox-full {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+div.textbox-left { margin-left: 30px }
+div.textbox-right { margin-right: 30px }
+
+/* Hide things. */
+#rsoc-nav-menu, #rsoc-nav-submenu, .nav, .no-print { display: none }
+.print-only { display: static }
+
+/* Don't underline links (since there's little point). Nobody's yet managed to click on a link on a piece of paper. */
+a { text-decoration: none }
+
+/* Rearrange the logo to use a non-transparent version which will show up on white paper. */
+#rsoc-nav { border: none }
+
+#rsoc-cornerlogo {
+	background-image: url("/static/img/logos/rocksoc-inverse-151x50.png");
+	background-position: top left;
+	background-repeat: no-repeat;
+	width: 151px;
+	height: 50px;
+}
+
+#rsoc-cornerlogo a {
+	visibility: hidden;
+	position: static;
+}
+
+/* Do the same for the WUS header. */
+div.wus-header {
+	background-image: url("/static/img/wus/logo-inverse-674x70.png");
+	background-position: top left;
+	background-repeat: no-repeat;
+}
+
+div.wus-header img.wus-header { visibility: hidden }
+
+/* Give the news box all the height it wants. */
+div#news-text, div#wus-text, div#next-wus, div#last-wus, div.index-text-news { height: auto }

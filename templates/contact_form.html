@@ -1,0 +1,132 @@
+{% extends "rocksoc_base.html" %}
+{% load rocksoc_html %}
+{% block title %}Contact Rocksoc{% endblock %}
+{% block content %}
+
+{% if not emailing %}
+<div class="center-section">
+	<h1 class="header-bar-full">Contact Rocksoc</h1>
+	<div class="textbox-full">
+		<p class="no-print">To contact Rocksoc, either send us an e-mail, talk to us in the pub or use the form below.</p>
+		<p class="print-only">To contact Rocksoc, either send us an e-mail or talk to us in the pub.</p>
+		<p><strong>Event promoters</strong> please make sure to address your e-mail/contact form to the <em>Events Officer</em>, or it probably won’t get looked at.</p>
+	</div>
+</div>
+{% endif %}
+
+<div class="center-section no-print">
+	<h2 class="header-bar-full">Rocksoc contact form</h2>
+	<div class="textbox-full">
+		{% if global_errors_html %}
+			<h2>An error occurred while sending your mail:</h2>
+			<ul>
+				{% for e in global_errors_html %}
+					<li>{{ e }}</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+
+		<form action="/feedback/" method="post">{% csrf_token %}
+			<table>
+			<!-- To -->
+				<tr>
+					<th><label for="id_to">To:</label></th>
+					<td>{{ form.to }}</td>
+				</tr>			
+				{% if form.to.errors %}
+					<tr>
+						<td colspan="2">*** {{ form.to.errors|join:", " }}</td>
+					</tr>
+				{% endif %}		
+			
+			<!-- Your name -->	
+				<tr>
+					<th><label for="id_your_name">Your name:</label></th>
+					<td>{{ form.your_name }}</td>
+				</tr>	
+				{% if form.your_name.errors %}
+					<tr>
+						<td colspan="2">
+							*** {{ form.your_name.errors|join:", " }}
+						</td>
+					</tr>
+				{% endif %}
+			
+			<!-- You email -->
+				<tr>
+					<th><label for="id_your_email">Your email address:</label></th>
+					<td>{{ form.your_email }}</td>
+				</tr>	
+				{% if form.your_email.errors %}
+					<tr>
+						<td colspan="2">
+							*** {{ form.your_email.errors|join:", " }}
+						</td>
+					</tr>
+				{% endif %}
+			
+			<!-- subject -->
+				<tr>
+					<th><label for="id_subject">Subject:</label></th>
+					<td>{{ form.subject }}</td>
+				</tr>
+				{% if form.subject.errors %}
+					<tr>
+						<td colspan="2">
+							*** {{ form.subject.errors|join:", " }}
+						</td>
+					</tr>
+				{% endif %}
+
+			<!-- message -->
+				<tr>
+					<th>
+						<label for="id_message">Message:</label>
+					</th>
+					<td>{{ form.message }}</td>
+				</tr>
+				{% if form.message.errors %}
+					<tr>
+						<td colspan="2">
+							*** {{ form.message.errors|join:", " }}
+						</td>
+					</tr>
+				{% endif %}
+				
+				
+			</table>
+	
+			<p><input type="submit" value="Send" /></p>
+		</form>
+	</div>
+</div>
+
+
+{% if not emailing %}
+<div class="center-section">
+	<h2 class="header-bar-full">Committee e-mail addresses</h2>
+	<div class="textbox-full">
+		<table class="emails">
+			<tr><th>Role</th><th>Name</th><th>E-mail</th></tr>
+			{% for Committee in current_committee %}
+				<tr><td>{{ Committee.position }}</td><td>{{ Committee.name }}</td><td><tt>{{ Committee.email }} at rocksoc org uk</tt></td></tr>
+			{% endfor %}
+		</table>
+	</div>
+</div>
+
+
+<div class="center-section">
+	<h2 class="header-bar-full">Postal address</h2>
+	<div class="textbox-full">
+    	<p class="heading">If you'd like to send us mail then send to:</p>
+    	<p class="body">
+    		Cambridge University Rock Society,<br />
+    		CUSU<br/>
+    		Cambridge
+    	</p>
+    </div>
+ </div>
+{% endif %}
+
+{% endblock %}

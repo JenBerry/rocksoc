@@ -1,0 +1,33 @@
+{% extends "rocksoc_base.html" %}
+{% load rocksoc_html %}
+{% block title %}Quote!{% endblock %}
+{% block content %}
+
+	<!-- Code for /quotes/ -->
+<div class="center-section">
+	<h1 class="header-bar-full">“Quote!”</h1>
+	<div class="textbox-full">
+	    <p class="strong">There are some things that need writing down for the benefit of future
+	       generations. Those that are unminuteable for whatever reason can be found
+	       here.
+	    </p>
+	    <br/>
+	    <table class="rsoc-quotes">
+		    <tr>
+			    <th>Date</th>
+			    <th>Name</th>
+			    <th>Quote</th>
+			    <th>Notes</th>
+		    </tr>
+			{% for q in quote_list %}
+		    	<tr>
+			    	<td>{{ q.date|date:"j N Y" }}</td>
+				<td>{{ q.person }}</td>
+				<td>{{ q.quote }}</td>
+				<td>{{ q.notes }}</td>
+		    	</tr>
+			{% endfor %}
+	    </table>
+	   </div>
+	</div>
+{% endblock %}

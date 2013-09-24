@@ -1,0 +1,45 @@
+{% extends "rocksoc_base.html" %}
+{% load rocksoc_html %}
+{% load markup %}
+{% block title %}Rocksoc Rogues' Gallery: {{ photo.caption }}{% endblock %}
+{% block content %}
+
+	<!-- code for individual photo pages of the member's gallery -->
+
+<div class="center-section">
+	<h1 class="header-bar-full">Rocksoc rogues’ gallery: {{ photo.caption }}</h1>
+	<p class="nav">
+		<!-- Photo navigation bar -->
+  		{% if photo.maybe_get_prev_by_id %}
+		<a href="/gallery/members/{{ photo.maybe_get_prev_by_id.id }}/">previous: {{ photo.maybe_get_prev_by_id.caption|escape }}</a> |
+  		{% endif %}
+  		{% if photo.maybe_get_next_by_id %}
+		<a href="/gallery/members/{{ photo.maybe_get_next_by_id.id }}/">next: {{ photo.maybe_get_next_by_id.caption|escape }}</a> |
+  		{% endif %}
+		<a href="/gallery/members/{{ photo_list.0.id }}/">first: {{ photo_list.0.caption|escape }}</a> |
+		<a href="/gallery/members/{{ photo.get_last_by_id.id }}/">last: {{ photo.get_last_by_id.caption|escape }}</a> |
+		<a href="/gallery/members/">Rogues' Gallery</a>
+	</p>
+
+	<div class="textbox-full member-photo">
+		<!-- The photo -->
+  		<img src="{{ MEDIA_URL }}{{ photo.filename }}" alt="[photo: {{ photo.caption|escape }}]"
+  			{% if image.width %}width="{{ photo.width }}"{% endif %}
+  			{% if image.height %}height="{{ photo.height }}"{% endif %}
+  		/>
+	</div>
+
+	<p class="nav">
+		<!-- photo nav bar again -->
+  		{% if photo.maybe_get_prev_by_id %}
+		<a href="/gallery/members/{{ photo.maybe_get_prev_by_id.id }}/">previous: {{ photo.maybe_get_prev_by_id.caption|escape }}</a> |
+  		{% endif %}
+  		{% if photo.maybe_get_next_by_id %}
+		<a href="/gallery/members/{{ photo.maybe_get_next_by_id.id }}/">next: {{ photo.maybe_get_next_by_id.caption|escape }}</a> |
+  		{% endif %}
+		<a href="/gallery/members/{{ photo_list.0.id }}/">first: {{ photo_list.0.caption|escape }}</a> |
+		<a href="/gallery/members/{{ photo.get_last_by_id.id }}/">last: {{ photo.get_last_by_id.caption|escape }}</a> |
+		<a href="/gallery/members/">Rogues' Gallery</a>
+	</p>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "rocksoc_base.html" %}
+{% load rocksoc_html %}
+
+{% comment %} Codes the event photos listing page /events/photos/year/
+changes block in events_base{% endcomment %}
+
+{% block title %}Rocksoc: event photos{% endblock %}
+
+
+{% block content %}
+<div class="center-section">
+	<h1 class="header-bar-full">Event photos</h1>
+
+	<div class="textbox-full">
+		<p class="heading">looking a bit sparse after removing the broken links<!-- 10/04/10 -->, and hasn't been used in a while</p><br/>
+		<table class="event-img">
+			<tr><th class="event-img-date">Date</th><th>Event</th><th>Photos</th></tr>
+		
+		
+		
+			{% for event in event_list %}
+				{% if event.epictures %}
+					<tr class="details-row">
+			  			<td>{{ event.edatetime|date:"Y D d M" }}</td>
+						<td>
+			   				{% if event.eoutlink %}		  
+			   					{% ifequal event.edatetime.year current_year %}				
+								<a href="{{ event.eoutlink|escape }}">{{ event.ename }}</a>
+			   					{% else %}
+									{{ event.ename }}
+			   					{% endifequal %}
+				   			{% else %}
+							{{ event.ename }}
+			   				{% endif %}
+			   				
+						
+						</td>
+						<td>{{ event.epictures|safe }}</td>
+					</tr>
+					
+					<tr class="description-row">
+					</tr>
+				{% endif %}				
+			{% endfor %}
+		
+		
+		
+		
+		
+		</table>
+	</div>
+</div>
+
+{% endblock %}
+
+
+

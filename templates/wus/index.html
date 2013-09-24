@@ -1,0 +1,138 @@
+{% extends "wus/wus_base.html" %}
+{% load rocksoc_html %}
+{% block title %}Rocksoc presents: Wake Up Screaming{% endblock %}
+
+{% block wus_content %}
+<!-- The code for the main part of /wus/ -->
+
+<!-- About WUS -->
+	<div class="center-section">
+		<div class="textbox-full">
+    		{% block _wus_blurb %}
+        		{% for flatpage in wus_blurb_list %}
+           			{{ flatpage|format_flatpage|safe }}
+        		{% endfor %}
+    		{% endblock %}
+			<br/><br/>
+   		</div>
+   	</div>
+   	
+ <!-- next WUS -->
+   	<div class="left-section">
+		<h2 class="header-bar-left">Next WUS</h2>
+   		<div class="textbox-left" id="next-wus">
+   			{% for wus in future_wus_list|slice:":1" %}
+   				{% include "wus/wus_summary.inc" %}
+   			{% endfor %}			
+		</div>
+	</div>
+	
+<!-- last WUS -->
+	<div class="right-section">
+		<h2 class="header-bar-right">Last WUS</h2>
+		<div class="textbox-right" id="last-wus">
+			{% for wus in past_wus_list|slice:":1" %}
+        		{% include "wus/wus_summary.inc" %}
+        	{% endfor %}
+		</div>
+	</div>
+	
+<!-- tracks played -->
+	<div class="center-section">
+		<h2 class="header-bar-full">Top tracks played</h2>
+		<div class="textbox-full">
+			<p class="heading">Top 10 Artists</p>
+			<table class="top-tracks">
+				<tr>
+					<th>Artist</th><th class="played">Plays</th>
+				</tr>
+				{% for a_and_count in WUSSetlistItem.get_top_artists %}
+					<tr>
+						<td>
+							<a href="/wus/artist/{{ a_and_count.0.id }}/">{{ a_and_count.0 }}</a>
+						</td>
+						<td>
+							{{ a_and_count.1 }}
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+			<br/>
+			<form action="/wus/artist/" method="get">
+				<p class="body">
+					<label for="artist_s">Artist name:</label> <input id="artist_s" type="text" name="s" maxlength="100" />
+					<input type="submit" value="Search" />
+				</p>
+			</form>
+			<br/>
+			<p class="heading">Top 10 tracks</p>
+			<table class="top-tracks">
+				<tr>
+					<th>Track</th><th class="artist">Artist</th><th class="played"></th>
+				</tr>
+				{% for a_t_count in WUSSetlistItem.get_top_tracks %}
+					<tr>
+						<td>
+							<a href="/wus/track/{{ a_t_count.1.id }}/">{{ a_t_count.1 }}</a>
+						</td>
+						<td>
+							<a href="/wus/artist/{{ a_t_count.0.id }}/">{{ a_t_count.0 }}</a>
+						</td>
+						<td>
+							{{ a_t_count.2}}
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+			<br/>
+			<form action="/wus/track/" method="get">
+				<p class="body">
+					<label for="track_s">Track name:</label> <input id="track_s" type="text" name="s" maxlength="100" />
+					<input type="submit" value="Search" />
+				</p>
+			</form>
+			<br/>
+			<p class="heading">10 random tracks</p>
+			<table class="top-tracks">
+				<tr>
+					<th>Track</th><th class="artist">Artist</th><th class="played"></th>
+				</tr>
+				{% for a_t_count in WUSSetlistItem.get_random_tracks %}
+					<tr>
+						<td>
+							<a href="/wus/track/{{ a_t_count.1.id }}/">{{ a_t_count.1 }}</a>
+						</td>
+						<td>
+							<a href="/wus/artist/{{ a_t_count.0.id }}/">{{ a_t_count.0 }}</a>
+						</td>
+						<td>
+							{{a_t_count.2}}
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+<!-- photos -->
+	<div class="center-section">
+		<h2 class="header-bar-full">Photos</h2>
+	</div>
+	<div class="left-section">
+		<div class="textbox-left img-box">
+			<img src="{{ STATIC_URL }}img/wus/shot1.jpg" alt="Manning the door at WUS"/>
+		</div>
+		<div class="textbox-left img-box">
+			<img src="{{ STATIC_URL }}img/wus/shot3.jpg" alt="Happy DJ at WUS"/>
+		</div>
+	</div>
+	<div class="right-section">
+		<div class="textbox-right img-box">
+			<img src="{{ STATIC_URL }}img/wus/shot2.jpg" alt="Talking and dancing at WUS in The Fountain"/>
+		</div>
+		<div class="textbox-right img-box">
+			<img src="{{ STATIC_URL }}img/wus/shot4.jpg" alt="Talking at WUS in The Fountain"/>
+		</div>
+	</div>
+
+{% endblock %}

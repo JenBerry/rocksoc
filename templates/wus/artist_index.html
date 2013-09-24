@@ -1,0 +1,69 @@
+{% extends "wus/wus_base.html" %}
+{% block title %}Wake Up Screaming: All artists{% endblock %}
+{% block wus_content %}
+
+<div class="center-section">
+	<h2 class="header-bar-full">All artists played at WUS</h2>
+	{% if is_paginated %}
+		<p>Page {{ page_obj.number }} of {{ paginator.num_pages }} (total of {{ paginator.count }} artists).
+			{% ifnotequal page_obj.number 1 %}
+				| <a href="./?page=1&amp;s={{ search_terms|urlencode|escape }}">First page</a>
+			{% endifnotequal %}
+			{% if page_obj.has_previous %}
+				| <a href="./?page={{ page_obj.previous_page_number }}&amp;s={{ search_terms|urlencode|escape }}">Previous page</a>
+			{% endif %}
+			{% for p in page_obj.paginator.pages %}
+				| <a href="./?page={{ p.number }}&amp;s={{ search_terms|urlencode|escape }}">{{ p }}</a>
+			{% endfor %}
+			{% if page_obj.has_next %}
+				| <a href="./?page={{ page_obj.next_page_number }}&amp;s={{ search_terms|urlencode|escape }}">Next page</a>
+			{% endif %}
+			{% ifnotequal page_obj.number paginator.num_pages %}
+				| <a href="./?page={{ paginator.num_pages }}&amp;s={{ search_terms|urlencode|escape }}">Last page</a>
+			{% endifnotequal %}
+		</p>
+	{% endif %}
+
+	<div class="textbox-full">
+		<form action="/wus/artist/" method="get">
+			<p>
+				<label for="id_s">Artist name:</label> <input id="id_s" type="text" name="s" maxlength="100" value="{{ search_terms|escape }}" />
+				<input type="submit" value="Search" />
+			</p>
+		</form>
+	</div>
+
+	<div class="textbox-full">
+		<table class="artist">
+			<tr>
+				<th>Artist</th>
+			</tr>
+			{% for artist in artist_list %}
+			<tr>
+				<td><a href="/wus/artist/{{ artist.id|urlencode|escape }}/">{{ artist.name }}</a></td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+
+	{% if is_paginated %}
+		<p>Page {{ page_obj.number }} of {{ paginator.num_pages }} (total of {{ paginator.count }} artists).
+			{% ifnotequal page_obj.number 1 %}
+				| <a href="./?page=1&amp;s={{ search_terms|urlencode|escape }}">First page</a>
+			{% endifnotequal %}
+			{% if page_obj.has_previous %}
+				| <a href="./?page={{ page_obj.previous_page_number }}&amp;s={{ search_terms|urlencode|escape }}">Previous page</a>
+			{% endif %}
+			{% for p in page_obj.paginator.pages %}
+				| <a href="./?page={{ p.number }}&amp;s={{ search_terms|urlencode|escape }}">{{ p }}</a>
+			{% endfor %}
+			{% if page_obj.has_next %}
+				| <a href="./?page={{ page_obj.next_page_number }}&amp;s={{ search_terms|urlencode|escape }}">Next page</a>
+			{% endif %}
+			{% ifnotequal page_obj.number paginator.num_pages %}
+				| <a href="./?page={{ paginator.num_pages }}&amp;s={{ search_terms|urlencode|escape }}">Last page</a>
+			{% endifnotequal %}
+		</p>
+	{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "rocksoc_base.html" %}
+{% load markup %}
+{% load rocksoc_html %}
+
+{% block title %}{{ flatpage.title }}{% endblock %}
+
+{% block content %}
+<div class="center-section">
+	<h1 class="header-bar-full">{{ flatpage.title }}</h1>
+	<div class="textbox-full">
+    	{{ flatpage|format_flatpage|safe }}
+ 	</div>
+ </div>
+{% endblock %}

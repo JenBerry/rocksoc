@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<link href="{{ STATIC_URL }}css/rocksoc.css" rel="stylesheet" type="text/css" />
+	<link href="{{ STATIC_URL }}css/rocksoc-print.css" rel="stylesheet" type="text/css" media="print" />
+	<link href="{{ STATIC_URL }}img/favicon.png" rel="shortcut icon" type="image/png" />
+	<title>{% block title %}Rocksoc{% endblock %}</title>
+	<meta name="description" content="Cambridge Rock Society: The society that brings together rock and metal fans and the music they love." />
+	<meta name="keywords" content="Rocksoc,Cambridge,Cambridge Rock Society,Wake Up Screaming,WUS,rock music,metal music,rock,metal,alternative music,Kambar,Q Club,Q Club Cambridge,Fountain Inn,Fountain Inn Cambridge,Cambridge club night,Cambridge gigs,Cambridge bands" />
+	{% block feeds %}
+	<link rel="alternate" type="application/rss+xml" href="/rss/" title="Rocksoc Events Feed" />
+	{# We don't want duplicate entries in the browser's feed list, so prefer RSS since that's what we've listed before #}
+	<!--<link rel="alternate" type="application/atom+xml" href="/atom/" title="Rocksoc Events Feed" />-->
+	{% endblock %}
+</head>
+<body>
+	<div id="rsoc-nav">
+		{# Base for all the rocksoc pages #}
+		{% block navbar %}
+			<div id="rsoc-cornerlogo">
+				<a href="/">
+					<img alt="Cambridge Rocksoc" height="50" src="{{ STATIC_URL }}img/logos/rocksoc-151x50-trans.png" width="151" />
+				</a>
+			</div>
+
+			{# The spaceless tag is needed so that the entries appear without spaces between them #}
+			{% spaceless %}
+			<ul id="rsoc-nav-menu">
+				<li><a href="/">Home</a></li>
+				<li><a href="/member/">Membership</a></li>
+				<li><a href="/events/">Events</a></li>
+				<li><a href="/wus/">Wake Up Screaming</a></li>
+				<li><a href="/information/">About Us</a></li>
+				<li><a href="/updates/">Keep Informed</a></li>
+			</ul>
+			<ul id="rsoc-nav-submenu">
+				<li><a href="/gallery/">Gallery</a></li>
+				<li><a href="/stash/">Stash</a></li>
+				<li><a href="/links/">Links</a></li>
+				<li><a href="/quotes/">Quote!</a></li>
+				<li><a href="/feedback/">Contact</a></li>
+			</ul>
+			{% endspaceless %}
+		{% endblock %}
+	</div>
+
+	<div class="all-content">
+		{% block content %} This is where the page content goes {% endblock %}
+	</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{% extends "rocksoc_base.html" %}
+{% block title %}Rocksoc: information {% endblock %}
+
+{% block content %}
+	<div class="center-section">
+		<h1 class="header-bar-full">Information about Rocksoc</h1>
+		<div class="textbox-full">
+			<p class="heading">Rocksoc is Cambridge's rock, metal, and alternative society</p>
+			<p class="body">
+				Our aim is to bring together people interested in rock, metal 
+				and alternative music, and to support the alternative scene in 
+				Cambridge. To this end we run a weekly club night: Wake Up 
+				Screaming, organise two live gigs per term, and have weekly pub 
+				meets to socialise. We may also organise other events such as 
+				trips to gigs elsewhere, and we attempt to keep a comprehensive 
+				record of all rock, metal, and alternative events happening in 
+				Cambridge.
+			</p>
+			<p class="heading">Who can join?</p>
+			<p class="body">
+				Anyone can join and take advantage of what we offer. We are 
+				officially a Cambridge University society, but this has no
+				bearing on our members, if it did we would go independent.
+			</p>
+			<p class="heading">What music do we cover?</p>
+			<p class="body">
+				Our music tastes evolve with our members, but we try to cater
+				for alternative music not covered elsewhere in Cambridge.
+			</p>
+			<p class="body">
+				The spectrum of interests in Rocksoc ranges from Grunge to
+				Alternative to Classic Metal to 70s Rock to Death and Black
+				Metal to Hardcore to Punk to Goth to Industrial and takes in
+				a good few others along the way, so the chances are that
+				whatever you like there'll be someone in Rocksoc who agrees
+				with you!
+			</p>
+		</div>
+	</div>
+
+	<div class="center-section">
+		<h2 class="header-bar-full">The Committee</h2>
+		<p class="nav">
+			<a href="/committee/current/">Current Committee</a> | Previous committees: 
+			{% for Committee in years %}
+				<a href="/committee/{{Committee.year_elected}}/">{{Committee.year_elected}}</a> 
+			{% endfor %}
+			<a href="/committee_old/">Older committees</a>
+		</p>
+		<div class="textbox-full">
+			{% include "committee.inc" %}
+		</div>
+	</div>
+
+	<div class="center-section">
+		<h2 class="header-bar-full">Other information</h2>
+		<div class="textbox-full">
+			<p><a href="/constitution/">The constitution</a></p>
+			<p><a href="/minutes/">Minutes of committee meetings</a></p>
+		</div>
+	</div>
+{% endblock %}

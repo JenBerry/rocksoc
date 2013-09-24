@@ -1,0 +1,52 @@
+{% extends "wus/wus_base.html" %}
+{% load rocksoc_html %}
+{% block title %}Wake Up Screaming: all dates{% endblock %}
+{% block wus_content %}
+<!-- code for /wus/date/ list of all wus's ever -->
+
+<div class="center-section">
+	<h2 class="header-bar-full">All WUSs</h2>
+	{% if is_paginated %}
+		<!-- wus pages nav bar -->
+		<p>Page {{ page_obj.number }} of {{ paginator.num_pages }} (total of {{ paginator.count }} dates).
+			{% ifnotequal page_obj.number 1 %}
+				| <a href="./?page=1">First page</a> |
+			{% endifnotequal %}
+			{% if page_obj.has_previous %}
+				| <a href="./?page={{ page_obj.previous_page_number }}">Previous page</a> |
+			{% endif %}
+			{% if page_obj.has_next %}
+				| <a href="./?page={{ page_obj.next_page_number }}">Next page</a> |
+			{% endif %}
+			{% ifnotequal page_obj.number paginator.num_pages %}
+				| <a href="./?page={{ paginator.num_pages }}">Last page</a> |
+			{% endifnotequal %}
+		</p>
+	{% endif %}
+	
+	{% for wus in wus_list %}
+		<div class="textbox-full">
+			{% include "wus/wus_summary.inc" %}
+		</div>
+	{% endfor %}
+	
+	{% if is_paginated %}
+		<!-- wus pages nav bar -->
+		<p>Page {{ page_obj.number }} of {{ paginator.num_pages }} (total of {{ paginator.count }} dates).
+			{% ifnotequal page_obj.number 1 %}
+				| <a href="./?page=1">First page</a> |
+			{% endifnotequal %}
+			{% if page_obj.has_previous %}
+				| <a href="./?page={{ page_obj.previous_page_number }}">Previous page</a> |
+			{% endif %}
+			{% if page_obj.has_next %}
+				| <a href="./?page={{ page_obj.next_page_number }}">Next page</a> |
+			{% endif %}
+			{% ifnotequal page_obj.number paginator.num_pages %}
+				| <a href="./?page={{ paginator.num_pages }}">Last page</a> |
+			{% endifnotequal %}
+		</p>
+	{% endif %}
+	
+</div>
+{% endblock %}

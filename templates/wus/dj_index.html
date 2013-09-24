@@ -1,0 +1,54 @@
+{% extends "wus/wus_base.html" %}
+{% block title %}Wake Up Screaming: All DJs{% endblock %}
+{% block wus_content %}
+
+<div class="center-section">
+	<h2 class="header-bar-full">All WUS DJs (you could be here)</h2>
+	{% if is_paginated %}
+		<p>Page {{ page_obj.number }} of {{ paginator.num_pages }} (total of {{ paginator.count }} DJs).
+			{% ifnotequal page_obj.number 1 %}
+				| <a href="./?page=1">First page</a>
+			{% endifnotequal %}
+			{% if page_obj.has_previous %}
+				| <a href="./?page={{ page_obj.previous_page_number }}">Previous page</a>
+			{% endif %}
+			{% for p in page_obj.paginator.pages %}
+				| <a href="./?page={{ p.number }}">{{ p }}</a>
+			{% endfor %}
+			{% if page_obj.has_next %}
+				| <a href="./?page={{ page_obj.next_page_number }}">Next page</a>
+			{% endif %}
+			{% ifnotequal page_obj.number paginator.num_pages %}
+				| <a href="./?page={{ paginator.num_pages }}">Last page</a>
+			{% endifnotequal %}
+		</p>
+	{% endif %}
+
+	<div class="textbox-full">
+		{% for dj in dj_list %}
+    		{% include "wus/dj_summary.inc" %}
+    		<hr />
+		{% endfor %}
+	</div>
+
+	{% if is_paginated %}
+		<p>Page {{ page_obj.number }} of {{ paginator.num_pages }} (total of {{ paginator.count }} DJs).
+			{% ifnotequal page_obj.number 1 %}
+				| <a href="./?page=1">First page</a>
+			{% endifnotequal %}
+			{% if page_obj.has_previous %}
+				| <a href="./?page={{ page_obj.previous_page_number }}">Previous page</a>
+			{% endif %}
+			{% for p in page_obj.paginator.pages %}
+				| <a href="./?page={{ p.number }}">{{ p }}</a>
+			{% endfor %}
+			{% if page_obj.has_next %}
+				| <a href="./?page={{ page_obj.next_page_number }}">Next page</a>
+			{% endif %}
+			{% ifnotequal page_obj.number paginator.num_pages %}
+				| <a href="./?page={{ paginator.num_pages }}">Last page</a>
+			{% endifnotequal %}
+		</p>
+	{% endif %}
+</div>
+{% endblock %}

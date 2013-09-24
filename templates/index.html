@@ -1,0 +1,107 @@
+{% extends "rocksoc_base.html" %}
+{% load rocksoc_html %}
+{% block title %}Rocksoc (Cambridge Rock Society){% endblock %}
+{% block content %}
+	{# The welcome box #}
+	<div class="center-section">
+		<h1 class="header-bar-full">Welcome to the Cambridge Rock Society</h1>
+		<div class="textbox-full">
+			{% for flatpage in intro_list %}
+				{{ flatpage|format_flatpage|safe }}
+			{% endfor %}
+		</div>
+	</div>
+
+	{# The WUS box #}
+	<div class="left-section">
+		<h2 class="header-bar-left">Wake Up Screaming</h2>
+		<div class="textbox-left" id="wus-text">
+			{% for wus in future_wus_list|slice:":1" %}
+				{% include "wus/wus_summary.inc" %}
+			{% endfor %}
+			<br /><a href="/wus/" class="no-print">Click here for more information</a>
+		</div>
+	</div>
+
+	{# The news box #}
+	<div class="right-section">
+		<h2 class="header-bar-right">News</h2>
+		<div class="textbox-right" id="news-text">
+			<div class="index-text-news">
+			{% for flatpage in upcoming_list %}
+				{{ flatpage|format_flatpage|safe }}
+			{% endfor %}
+			</div>
+			<a href="/news/" class="no-print">&hellip;read more</a>
+		</div>
+	</div>
+
+	{# The events box #}
+	<div class ="center-section">
+		<h2 class="header-bar-full">Events in the next fortnight</h2>
+		<div class="textbox-full">
+			<table class="events">
+				{% for event in event_list %}
+					<tr
+						{% if event.is_rocksoc %}
+						class="rocksoc-event"
+						{% else %}
+						class="other-event"
+						{% endif %}
+					>
+						<td class="event-info">
+							<p class="event-date">{% block date_td %}{{ event.edatetime|date:"jS N Y H:i" }}{% endblock %}</p>
+							<p class="event-title">
+							{% block event-title %}
+								{% if event.eoutlink %}
+									<a href="{{ event.eoutlink }}">{{ event.ename }}</a>
+								{% else %}
+									{{ event.ename }}
+								{% endif %}
+							{% endblock %}
+							</p>
+							<p class="event-venue">
+							{% block venue %}
+								{% if event.venue %}
+									at 
+									{% if event.venue.use_our_page %}<a href="/venues/{{ event.venue.id }}/">
+									{% else %}
+										{% if event.venue.website %}<a href="{{ event.venue.website }}">
+										{% endif %}
+									{% endif %}
+									{{ event.venue.name }}
+									{% if event.venue.use_our_page or event.venue.website %}
+										</a>
+									{% endif %}
+								{% endif %}
+							{% endblock %}
+							</p>
+							{% block organiser_td %}
+								{% if event.organised_by %}
+									<p class="event-organiser">
+										Organised by {{ event.organised_by }}
+									</p>
+								{% endif %}
+							{% endblock %}
+							{% block event-icon %}
+								{% if event.eicon %}
+									<p class="event-img"><img src="{{event.eicon}}" width="100px" alt="Event-icon" /></p>
+								{% endif %}
+							{% endblock %}
+						</td>
+						<td class="event-description">
+							{% block event-desc %}
+								{{ event.edescription|safe }}
+								{% if event.elink %}
+								{% ifnotequal event.elink "none" %}
+									(<a href="{{ event.elink }}">read more...</a>)
+								{% endifnotequal %}
+								{% endif %}
+							{% endblock %}
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+{% endblock %}

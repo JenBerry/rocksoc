@@ -1,0 +1,31 @@
+{% extends "rocksoc_base.html"%}
+{% block title %}Rocksoc Membership {% endblock %}
+{% block content %}
+<div class="center-section">
+	<h1 class="header-bar-full">Rocksoc membership</h1>
+	<div class="textbox-full">
+		<p class="strong">Get life-long Rocksoc membership for £5.</p>
+		<p class="heading">For this you get a laminated black membership card (be the envy of all your friends!)</p>
+		<p class="heading">Using this card you can then:</p>
+		<p class="body">Get into Wake Up Screaming for £3 instead of £4 (meaning it just takes 4 trips to make your money back)</p>
+		<p class="body">Get cheaper entry to all of our gigs (typically £1 off)</p>
+		<p class="body">Get a vote at the Rocksoc AGM</p>
+		<p class="body">Get reduced prices on other events in Cambridge (when we can arrange it)</p><br/>
+		<p class="strong">To join, ask on the door at Wake Up Screaming.</p> <br/>
+		<div class="rocksoc-card">
+			<div class="rocksoc-card-inner">
+				<img src="{{ STATIC_URL }}img/logos/rocksoc-151x50.png" alt="Rocksoc"/>
+				<p>Cambridge Rock Society</p><br/><br />
+				<table>
+					<tr>
+						<td class="small">Name: </td><td class="big" colspan="3">YOUR NAME</td>
+					</tr>
+					<tr>
+						<td class="small">Expires: </td><td class="big">DEATH</td><td class="small">Signed: </td><td class="big"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

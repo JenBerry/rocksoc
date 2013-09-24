@@ -1,0 +1,9 @@
+{% extends "events_base.html" %}
+{% load rocksoc_html %}
+{% block title %}Rocksoc: past events: {{ year }}
+<!-- Past events from the current year still show their images and links -->
+{% endblock %}
+
+{% block h1_text %}Past events: {{ year }}{% endblock %}
+	
+{% block date_td %}{{ event.edatetime|date:"jS N" }}{% endblock %}

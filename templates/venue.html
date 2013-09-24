@@ -1,0 +1,54 @@
+{% extends "rocksoc_base.html" %}
+{% load rocksoc_html %}
+{% block title %}Rocksoc venue: {{ venue.name }}{% endblock %}
+
+{% block content %}
+
+	<!-- Code for the individual venue pages -->
+	<!-- checks which inforation has been given, and displays it if it has -->
+
+<div class="center-section">
+	<h1 class="header-bar-full">
+		Venue: {{ venue.name }}
+		{% if venue.location %}
+		, {{ venue.location }}
+		{% endif %}
+	</h1>
+	<div class="textbox-full">
+	    {% if venue.location %}
+	        <table class="venuetable" width="100%">
+	            <tr>
+	                <th>Map:</th>
+	                <td>
+	                    <a href="{{ venue.map_url|escape }}">{% if venue.map_image %}<img src="{{ venue.map_image|escape }}" alt="Map" />{% else %}click here for a map{% endif %}</a>
+	                </td>
+	            </tr>
+	            {% if venue.directions %}
+	            	<tr>
+	                	<th>Directions:</th>
+				<td>{{ venue.directions }}</td>
+	            	</tr>
+	            {% endif %}
+	            {% if venue.phone %}
+	            	<tr>
+	                	<th>Phone:</th>
+	               	 	<td>{{ venue.phone|escape }}</td>
+	            	</tr>
+	            {% endif %}
+	            {% if venue.website %}
+	            	<tr>
+	                	<th>Website:</th>
+	                	<td><a href="{{ venue.website|escape }}">{{ venue.website|escape }}</a></td>
+	            	</tr>
+	            {% endif %}
+	            {% if venue.notes %}
+	            	<tr>
+	                	<th>Notes:</th>
+	                	<td>{{ venue.notes|escape }}</td>
+	            	</tr>
+	            {% endif %}
+	        </table>
+	    {% endif %}
+	</div>
+</div>
+{% endblock %}

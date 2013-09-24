@@ -1,0 +1,54 @@
+{% extends "wus/wus_base.html" %}
+{% load rocksoc_html %}
+{% block title %}Wake Up Screaming track: {{ track.name }}{% endblock %}
+
+{% block wus_content %}
+	<!-- shows all instances where a track was played at WUS /wus/track/trackname -->
+<div class="center-section">
+	<h2 class="header-bar-full">Track: {{ track.name }}, played {{track.setlist_items.all|length|times}}</h2>
+	<div class="textbox-full">
+
+
+
+		<table class="track">
+		  <tr>
+		    <th>Artist</th>
+		    <th>WUS</th>
+		    <th>DJ</th>
+		    <th>Set info</th>
+		  </tr>
+		  {% for setlist_item in track.setlist_items.all reversed %}
+			  <tr>
+			    <td>
+			    	{% if not artist_on_own_page %}
+        				<a href="/wus/artist/{{ setlist_item.artist.id|urlencode|escape }}/">
+        			{% endif %}
+				{{ setlist_item.artist.name }}
+        			{% if not artist_on_own_page %}
+        				</a>
+        			{% endif %}
+			    
+			    </td>
+			    <td>
+			    	<a href="/wus/date/{{ setlist_item.set.event.edatetime|date:"Y-m-d" }}/#wus-set-{{ setlist_item.set.event.edatetime|date:"Ymd" }}-{{ setlist_item.set.start|time:"Hi" }}">
+    					{{ setlist_item.set.event.edatetime|date:"jS N Y" }} {{ setlist_item.set.start|time:"H:i" }}-{{ setlist_item.set.end|time:"H:i" }}
+    				</a>
+    			</td>
+			    <td>
+			    	<a href="/wus/dj/{{ setlist_item.set.dj.userid }}/">
+					{{ setlist_item.set.dj.name }}
+    				</a>
+			    </td>
+			    <td>{{ setlist_item.set.playing }}</td>
+			  </tr>
+		  {% endfor %}
+		</table>
+
+
+
+
+	
+	</div>
+
+</div>
+{% endblock %}
